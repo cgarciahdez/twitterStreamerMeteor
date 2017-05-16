@@ -2,6 +2,9 @@ import React, {Component} from "react";
 import {PropTypes} from "prop-types";
 import { Meteor } from "meteor/meteor";
 import { createContainer} from "meteor/react-meteor-data"
+import ColombiaMap from "./ColombiaMap.jsx";
+import Overlay from "./Overlay.jsx"
+
 
 import TweetsResults from "./TweetsResults.jsx";
 import {Tweets} from "../api/Tweets.js";
@@ -10,6 +13,18 @@ export class App extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+        proj: null,
+    }
+
+  }
+
+  setProjection(p){
+      this.setState({proj:p})
+  }
+
+  getProjection(){
+      return this.state.proj;
   }
 
   changeQuery(evt) {
@@ -29,6 +44,13 @@ export class App extends Component {
     console.log("render!");
     return (
       <div>
+          <Overlay tweets={this.props.tweets} projection={this.state.proj}></Overlay>
+          <ColombiaMap
+width="600"
+height="600"
+data={{RISARALDA:10}}
+setProjection={this.setProjection.bind(this)}
+></ColombiaMap>
         <input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
@@ -36,7 +58,10 @@ export class App extends Component {
         }
         <h2>Results:</h2>
         {this.props && this.props.tweets ?
-          <TweetsResults tweets={this.props.tweets}/> :
+          <div>
+              <TweetsResults tweets={this.props.tweets}/>
+
+          </div> :
           <p>Enter a query</p>
         }
 
