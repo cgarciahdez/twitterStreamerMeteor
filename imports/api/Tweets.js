@@ -23,6 +23,7 @@ if (Meteor.isServer) {
       console.log("Twitter search" + query);
 
       // Create the Twitter object
+      console.log(process.env.TWITTER_CONSUMER_KEY)
       let client = new Twitter({
         consumer_key: process.env.TWITTER_CONSUMER_KEY,
         consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
