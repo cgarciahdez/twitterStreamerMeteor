@@ -21,7 +21,7 @@ export default class Overlay extends Component {
 
         ctx.globalAlpha = 0.5;
         let maxId=this.lastId;
-        ctx.fillStyle = '#FFA500';
+        ctx.fillStyle = '#9400d3';
         ctx.strokeStyle = 'black';
         nextP.tweets.map((tweet)=>{
                 if(tweet.id>this.lastId){

@@ -5,6 +5,8 @@ import { createContainer} from "meteor/react-meteor-data"
 import ColombiaMap from "./ColombiaMap.jsx";
 import Overlay from "./Overlay.jsx"
 import HiddenOverlay from './HiddenOverlay.jsx'
+import {Well} from 'react-bootstrap';
+
 
 
 import TweetsResults from "./TweetsResults.jsx";
@@ -61,7 +63,10 @@ export class App extends Component {
     console.log("render!");
     return (
       <div>
-          <div>
+          <div style={{'text-align':'center'}}><h1>Visualizador de tweets en Colombia<br></br><small>Camila García</small></h1></div>
+          <hr></hr>
+          <div className="col-md-6">
+             <div><h4>Hover over the points and see the tweet to the right!</h4></div>
           <HiddenOverlay tweets={this.props.tweets} projection={this.state.proj} setPixel={this.setGetPixel.bind(this)}></HiddenOverlay>
           <Overlay tweets={this.props.tweets} projection={this.state.proj}></Overlay>
           <ColombiaMap
@@ -71,13 +76,16 @@ data={{RISARALDA:0}}
 setProjection={this.setProjection.bind(this)}
 putTweet={this.putTweet.bind(this)}
 ></ColombiaMap>
-{this.state.tweetActual?
-<Tweet key={this.state.tweetActual.id} tweet={this.state.tweetActual}></Tweet>
-:
-<p></p>
-}
+
 </div>
-<div>
+<div className="col-md-6">
+    {this.state.tweetActual?
+        <Well>
+    <Tweet key={this.state.tweetActual.id} tweet={this.state.tweetActual}></Tweet>
+    </Well>
+    :
+    <p></p>
+    }
         <input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
