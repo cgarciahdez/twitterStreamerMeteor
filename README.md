@@ -5,7 +5,7 @@
 
 This is an app created from the boilerplate provided for the 2017-1 Web Development course at Uniandes. With it, you can visualize tweets in the Colombia map and see the latest ones in real time.
 
-## Desplegar
+## Deploy
 
 Clone or download the repository to your computer. Because this app uses the twitter api to get the stream of tweets, you will need to create a twitter developer app to get your consumer and access token keys and secrets. Next, you will need to set them to enviroments in your computer. Afterwards, you have to install the necessary npm packages and run the program:
 
