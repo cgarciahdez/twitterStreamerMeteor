@@ -10,40 +10,38 @@ export default class Overlay extends Component {
       this.state = {
           canvas: null
       }
+      this.lastId=0
     }
 
-    drawPoints(){
-        var canvas = this.state.canvas;
-        var ctx = canvas.getContext('2d');
-        ctx.beginPath();
-        console.log(this.props.tweets)
-        this.props.tweets.map((tweet)=>{
-            let point = this.props.projection(tweet.coordinates.coordinates);
-            console.log(point);
-            ctx.moveTo(point[0], point[1]);
-            ctx.arc(point[0], point[1], 20, 0, Math.PI * 2, true);
 
-        });
-        ctx.fill();
-
-
-    }
 
     componentWillUpdate(nextP){
-        console.log(nextP.tweets);
         var canvas = this.state.canvas;
         var ctx = canvas.getContext('2d');
-        ctx.beginPath();
-        console.log(this.props.tweets)
+
+        ctx.globalAlpha = 0.5;
+        let maxId=this.lastId;
+        ctx.fillStyle = '#FFA500';
+        ctx.strokeStyle = 'black';
         nextP.tweets.map((tweet)=>{
-            let point = this.props.projection(tweet.coordinates.coordinates);
-            console.log(point);
-            ctx.moveTo(point[0], point[1]);
-            ctx.arc(point[0], point[1], 5, 0, Math.PI * 2, true);
+                if(tweet.id>this.lastId){
+                    ctx.beginPath();
+                let point = this.props.projection(tweet.coordinates.coordinates);
+
+                ctx.moveTo(point[0]+5, point[1]);
+                ctx.arc(point[0], point[1], 5, 0, Math.PI * 2, true);
+                ctx.fill();
+
+                if(tweet.id>maxId){
+                    maxId=tweet.id;
+                }
+            }
 
         });
-        ctx.fill();
+        this.lastId=maxId;
     }
+
+
 
 
   render() {

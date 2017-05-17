@@ -261,9 +261,19 @@ export default class ColombiaMap extends Component {
 		}
 	}
 
+	handleMove(e){
+        console.log(e);
+        e.preventDefault;
+		//console.log(e.nativeEvent.offsetX);
+		//console.log(e.nativeEvent.offsetY);
+		this.props.putTweet(e.nativeEvent.offsetX,e.nativeEvent.offsetY);
+
+    }
+
+
 	render() {
 		return (
-			<div className="colombiaMap">
+			<div onMouseMove={(e) => this.handleMove(e)} className="colombiaMap">
 				<svg
 					ref={(svg) => {this.svg = svg; }}>
 				</svg>
