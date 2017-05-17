@@ -1,5 +1,8 @@
 # Colombia Tweets Visualizer
 
+![demo image](/public/demo.png)
+
+
 This is an app created from the boilerplate provided for the 2017-1 Web Development course at Uniandes. With it, you can visualize tweets in the Colombia map and see the latest ones in real time.
 
 ## Desplegar

@@ -86,7 +86,7 @@ putTweet={this.putTweet.bind(this)}
     :
     <p></p>
     }
-        <input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
+        <input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Press enter to start stream!"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
           <span></span>
