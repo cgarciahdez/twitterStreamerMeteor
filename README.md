@@ -42,3 +42,7 @@ Be sure to press enter in the query area to start the stream!
 ## Secret Sauce
 
 The special add on of my project is the visualization of tweets when you hover over them in the map. That way, you can now _what_ they are saying in every part of the country, and not just sit down and wonder where that tweet about the free food came from!
+
+Also, the super cool icon that I made myself:
+
+![icon](/public/iconito.png)
